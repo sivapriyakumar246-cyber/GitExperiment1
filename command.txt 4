@@ -1,0 +1,5 @@
+cd C:\Users\TEMP.SIVAPRIYA\GitExperiment1
+git checkout experiment4
+git status
+git push -u origin experiment4
+start https://github.com/sivapriyakumar246-cyber/GitExperiment1/pull/new/experiment4
