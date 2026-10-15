@@ -1,0 +1,29 @@
+1. Create a repository:
+git init
+
+2. Create a file:
+echo Hello GitHub > hello.txt
+
+3. Check the files:
+dir
+
+4. Add the file:
+git add hello.txt
+
+5. Commit the file:
+git commit -m "First commit"
+
+6. Rename the branch:
+git branch -M main
+
+7. Connect GitHub repository:
+git remote add origin https://github.com/sivapriyakumar246-cyber/GitExperiment1.git
+
+8. Upload to GitHub:
+git push -u origin main
+
+9. Check repository status:
+git status
+
+10. View commit history:
+git log --oneline
