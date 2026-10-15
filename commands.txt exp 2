@@ -1,0 +1,47 @@
+1. Check Git Version
+git --version
+
+2. Clone the Existing GitHub Repository
+git clone https://github.com/sivapriyakumar246-cyber/GitExperiment1.git
+
+3. Open the Repository Folder
+cd GitExperiment1
+
+4. Display the Files
+dir
+
+5. Check Repository Status
+git status
+
+6. Check the Current Branch
+git branch
+
+7. Check the Remote Repository
+git remote -v
+
+8. Create a File for Experiment 2
+echo Experiment 2 - GitHub Sync > Experiment2.txt
+
+9. Display the File Content
+type Experiment2.txt
+
+10. Add the File to the Staging Area
+git add Experiment2.txt
+
+11. Check Repository Status
+git status
+
+12. Commit the Changes
+git commit -m "Experiment 2 commit"
+
+13. Push Local Commits to GitHub
+git push
+
+14. Pull Updates from GitHub
+git pull
+
+15. Display Commit History
+git log --oneline
+
+16. Check Final Repository Status
+git status
