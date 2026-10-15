@@ -1,0 +1,1 @@
+name: Basic CI Workflowecho on:echo   push:echo     branches: ["main"]echo   pull_request:echo     branches: ["main"]echo jobs:echo   build:echo     runs-on: ubuntu-latestecho     steps:echo       - name: Checkout repositoryecho         uses: actions/checkout@v3echo       - name: Display a messageecho         run: echo "Hello, GitHub Actions!"
