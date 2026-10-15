@@ -1,0 +1,34 @@
+cd C:\Users\TEMP.SIVAPRIYA\GitExperiment1
+
+git checkout main
+
+git pull origin main
+
+mkdir .github
+
+mkdir .github\workflows
+
+(
+echo name: Basic CI Workflow
+echo on:
+echo   push:
+echo     branches: ["main"]
+echo   pull_request:
+echo     branches: ["main"]
+echo jobs:
+echo   build:
+echo     runs-on: ubuntu-latest
+echo     steps:
+echo       - name: Checkout repository
+echo         uses: actions/checkout@v3
+echo       - name: Display a message
+echo         run: echo "Hello, GitHub Actions!"
+) > .github\workflows\main.yml
+
+git add .github\workflows\main.yml
+
+git status
+
+git commit -m "Add basic GitHub Actions workflow"
+
+git push origin main
