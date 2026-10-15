@@ -1,0 +1,242 @@
+1. CHECK GIT VERSION
+Command:
+git --version
+
+Purpose:
+To check whether Git is installed.
+
+
+2. CREATE A NEW FOLDER
+Command:
+mkdir GitExperiment1
+
+Purpose:
+To create a folder named GitExperiment1.
+
+
+3. OPEN THE FOLDER
+Command:
+cd GitExperiment1
+
+Purpose:
+To enter the GitExperiment1 folder.
+
+
+4. CREATE A TEXT FILE
+Command:
+echo Student Details > Student.txt
+
+Purpose:
+To create Student.txt and write Student Details inside it.
+
+
+5. INITIALIZE GIT REPOSITORY
+Command:
+git init
+
+Purpose:
+To initialize Git in the current folder.
+
+
+6. CHECK REPOSITORY STATUS
+Command:
+git status
+
+Purpose:
+To check the current status of files.
+
+
+7. ADD A FILE TO THE STAGING AREA
+Command:
+git add Student.txt
+
+Purpose:
+To prepare Student.txt for committing.
+
+
+8. ADD ALL FILES TO THE STAGING AREA
+Command:
+git add .
+
+Purpose:
+To prepare all files for committing.
+
+
+9. COMMIT THE FILE
+Command:
+git commit -m "Add student details"
+
+Purpose:
+To save the staged changes in Git history.
+
+
+10. RENAME THE BRANCH TO MAIN
+Command:
+git branch -M main
+
+Purpose:
+To rename the current branch to main.
+
+
+11. CONNECT THE LOCAL REPOSITORY TO GITHUB
+Command:
+git remote add origin https://github.com/sivapriyakumar246-cyber/GitExperiment1.git
+
+Purpose:
+To connect the local repository to the GitHub repository.
+
+
+12. CHECK THE REMOTE REPOSITORY
+Command:
+git remote -v
+
+Purpose:
+To display the connected remote repository URL.
+
+
+13. UPLOAD FILES TO GITHUB
+Command:
+git push -u origin main
+
+Purpose:
+To upload committed files to GitHub.
+
+
+14. DOWNLOAD UPDATES FROM GITHUB
+Command:
+git pull origin main
+
+Purpose:
+To download and integrate changes from GitHub.
+
+
+15. MERGE UNRELATED REPOSITORY HISTORIES
+Command:
+git pull origin main --allow-unrelated-histories
+
+Purpose:
+To combine two repositories that have separate histories.
+
+Note:
+Use this only when necessary.
+
+
+16. DISPLAY COMMIT HISTORY
+Command:
+git log --oneline
+
+Purpose:
+To display the commit history.
+
+
+17. DISPLAY FILES IN THE CURRENT FOLDER
+Command:
+dir
+
+Purpose:
+To list the files and folders.
+
+
+18. DISPLAY TEXT FILE CONTENTS
+Command:
+type Student.txt
+
+Purpose:
+To display the contents of Student.txt.
+
+
+19. CHECK THE CURRENT BRANCH
+Command:
+git branch
+
+Purpose:
+To display the available local branches.
+
+
+20. CREATE ANOTHER FILE
+Command:
+echo Hello GitHub > hello.txt
+
+Purpose:
+To create hello.txt with the text Hello GitHub.
+
+
+21. ADD THE NEW FILE
+Command:
+git add hello.txt
+
+Purpose:
+To prepare hello.txt for committing.
+
+
+22. COMMIT THE NEW FILE
+Command:
+git commit -m "Add hello file"
+
+Purpose:
+To save the new file in Git history.
+
+
+23. PUSH NEW CHANGES TO GITHUB
+Command:
+git push
+
+Purpose:
+To upload new committed changes to GitHub.
+
+
+24. CLONE A GITHUB REPOSITORY
+Command:
+git clone https://github.com/sivapriyakumar246-cyber/GitExperiment1.git
+
+Purpose:
+To download a copy of a GitHub repository.
+
+
+25. VIEW COMMIT DETAILS
+Command:
+git log
+
+Purpose:
+To display detailed commit history.
+
+
+26. CHECK UNCOMMITTED CHANGES
+Command:
+git diff
+
+Purpose:
+To display changes that have not been staged.
+
+
+27. REMOVE A FILE FROM GIT
+Command:
+git rm hello.txt
+
+Purpose:
+To stage the removal of hello.txt from Git.
+
+
+28. COMMIT FILE REMOVAL
+Command:
+git commit -m "Remove hello file"
+
+Purpose:
+To save the file removal in Git history.
+
+
+29. CHECK REMOTE DETAILS
+Command:
+git remote show origin
+
+Purpose:
+To display information about the remote repository.
+
+
+30. FINAL STATUS CHECK
+Command:
+git status
+
+Purpose:
+To check whether all changes have been committed.
+
