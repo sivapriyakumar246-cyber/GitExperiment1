@@ -1,0 +1,45 @@
+
+1. Check Git version
+git --version
+
+2. Create project folder
+mkdir GitExperiment2
+
+3. Open project folder
+cd GitExperiment2
+
+4. Create a student file
+echo Student Details > Student.txt
+
+5. Initialize Git
+git init
+
+6. Add file to staging
+git add Student.txt
+
+7. Check status
+git status
+
+8. Commit the file
+git commit -m "Add student details"
+
+9. Rename branch
+git branch -M main
+
+10. Connect GitHub repository
+git remote add origin YOUR_GITHUB_REPOSITORY_URL
+
+11. Check remote connection
+git remote -v
+
+12. Upload to GitHub
+git push -u origin main
+
+13. View commit history
+git log --oneline
+
+14. Display files
+dir
+
+15. Display file content
+type Student.txt
