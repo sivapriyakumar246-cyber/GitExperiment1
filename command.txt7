@@ -1,0 +1,108 @@
+EX.NO. 7 — USE SECRETS IN GITHUB ACTIONS SECURELY
+
+AIM:
+To securely store sensitive information using GitHub Secrets and access it in a GitHub Actions workflow without exposing it in the repository or logs.
+
+PROCEDURE:
+
+STEP 1: OPEN THE REPOSITORY
+Explanation: Move into the cloned GitHub repository and check its status.
+
+Command:
+cd GitExperiment1
+git status
+
+
+STEP 2: ADD A REPOSITORY SECRET
+Explanation: Open the repository's Actions secrets settings in a browser.
+
+Command:
+start https://github.com/sivapriyakumar246-cyber/GitExperiment1/settings/secrets/actions
+
+Browser steps:
+1. Sign in to GitHub if required.
+2. Click "New repository secret".
+3. Enter Name: API_KEY
+4. Enter a harmless demonstration value: demo12345
+5. Click "Add secret".
+6. Confirm that API_KEY appears in the secrets list.
+
+Note: Do not enter a real password or API key for this demonstration.
+
+
+STEP 3: CREATE THE WORKFLOW FILE
+Explanation: Open Notepad to create a GitHub Actions workflow that accesses the secret.
+
+Command:
+notepad .github\workflows\secret.yml
+
+In Notepad, paste the following YAML:
+
+name: Use API Key
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  secret-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use secret safely
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          if [ -n "$API_KEY" ]; then
+            echo "API secret is configured and available."
+          else
+            echo "API secret is missing."
+            exit 1
+          fi
+
+Explanation:
+The workflow accesses the saved secret through the API_KEY environment variable. It checks whether the secret is available but does not print its actual value.
+
+Save the file using Ctrl+S and close Notepad.
+
+
+STEP 4: ADD AND COMMIT THE WORKFLOW
+Explanation: Add the workflow file to Git and commit it.
+
+Commands:
+git add .github\workflows\secret.yml
+git commit -m "Add secure GitHub Actions secrets workflow"
+
+
+STEP 5: PUSH THE WORKFLOW TO GITHUB
+Explanation: Upload the committed workflow to the main branch.
+
+Command:
+git push origin main
+
+If Git rejects the push because GitHub has newer changes, run:
+git pull --no-rebase origin main
+git push origin main
+
+If a merge conflict appears, resolve it before pushing.
+
+
+STEP 6: VERIFY THE WORKFLOW
+Explanation: Open GitHub Actions and check the workflow result.
+
+Command:
+start https://github.com/sivapriyakumar246-cyber/GitExperiment1/actions
+
+Browser steps:
+1. Find the "Use API Key" workflow.
+2. Open its latest run.
+3. Check that the job succeeds.
+4. The log should display:
+   API secret is configured and available.
+
+The secret's actual value should not appear in the logs.
+
+
+RESULT:
+The API_KEY secret was stored in GitHub repository settings and accessed securely by a GitHub Actions workflow without exposing its value in the workflow logs.
