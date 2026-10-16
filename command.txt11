@@ -1,0 +1,139 @@
+
+EX.NO. 11: ANALYZE AND FIX FAILING CI WORKFLOWS
+
+AIM:
+To identify, analyze, and fix errors in a failing GitHub Actions workflow and verify that the corrected workflow runs successfully.
+
+GITHUB REPOSITORY:
+https://github.com/sivapriyakumar246-cyber/GitExperiment1
+
+STEP 1: OPEN THE REPOSITORY
+
+Open the repository in a browser and click the Actions tab.
+
+STEP 2: CREATE A WORKFLOW WITH AN INTENTIONAL ERROR
+
+Open CMD and navigate to the repository:
+
+cd "%USERPROFILE%\GitExperiment1\GitExperiment1"
+
+Create the workflow folder if it does not exist:
+
+mkdir .github\workflows
+
+Open Notepad:
+
+notepad .github\workflows\ci-fix-demo.yml
+
+Paste this YAML into Notepad and save it:
+
+name: CI Failure and Fix Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run test command
+        run: |
+          echo "Starting CI test"
+          python --version
+          exit 1
+
+      - name: Finish
+        run: echo "CI test completed"
+
+STEP 3: COMMIT AND PUSH THE FAILING WORKFLOW
+
+Run these commands separately in CMD:
+
+git status
+git add .github\workflows\ci-fix-demo.yml
+git commit -m "Add CI workflow failure demonstration"
+git push origin main
+
+If Git rejects the push because GitHub has newer changes, run:
+
+git pull --no-rebase origin main
+git push origin main
+
+STEP 4: IDENTIFY THE FAILED WORKFLOW
+
+1. Open GitHub repository and click Actions.
+2. Select CI Failure and Fix Demo.
+3. Open the latest workflow run.
+4. Click the failed job named test.
+5. Expand the Run test command step.
+6. Find the failure message.
+
+The workflow fails because the command exit 1 returns a failure status.
+
+Take a screenshot of the failed workflow and its log.
+
+STEP 5: ANALYZE THE ERROR
+
+The failing command is:
+
+exit 1
+
+Exit status 1 indicates that the command failed. GitHub Actions marks the job as failed when a step returns a non-zero exit code.
+
+STEP 6: FIX THE WORKFLOW
+
+Open the workflow file:
+
+notepad .github\workflows\ci-fix-demo.yml
+
+Replace the failing command:
+
+exit 1
+
+with:
+
+echo "Test passed"
+
+The corrected Run test command step should be:
+
+      - name: Run test command
+        run: |
+          echo "Starting CI test"
+          python --version
+          echo "Test passed"
+
+Save and close Notepad.
+
+STEP 7: COMMIT AND PUSH THE FIX
+
+Run these commands in CMD:
+
+git add .github\workflows\ci-fix-demo.yml
+git commit -m "Fix failing CI workflow"
+git push origin main
+
+If Git rejects the push because GitHub has newer changes, run:
+
+git pull --no-rebase origin main
+git push origin main
+
+STEP 8: VERIFY THE CORRECTED WORKFLOW
+
+1. Open GitHub repository and click Actions.
+2. Open CI Failure and Fix Demo.
+3. Select the latest run created by the fix commit.
+4. Check that the job finishes with a green Success status.
+5. Open the job logs and confirm the test step completed.
+
+Take a screenshot of the successful workflow run.
+
+STEP 9: RESULT
+
+The CI workflow failure was analyzed by examining its logs. The incorrect failing command was identified and corrected. After committing and pushing the fix, the GitHub Actions workflow completed successfully.
+```0
