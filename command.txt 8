@@ -1,0 +1,222 @@
+EXPERIMENT 8: DEPLOY A STATIC WEBSITE USING GITHUB ACTIONS AND GITHUB PAGES
+
+AIM:
+To create a static website and deploy it automatically using GitHub Actions and GitHub Pages.
+
+REPOSITORY:
+https://github.com/sivapriyakumar246-cyber/GitExperiment1
+
+--------------------------------------------------
+STEP 1: OPEN THE REPOSITORY IN CMD
+--------------------------------------------------
+
+If the repository is already cloned on the lab computer, run:
+
+cd "%USERPROFILE%\GitExperiment1"
+
+Explanation:
+This command moves CMD into the GitExperiment1 project folder.
+
+Get the latest repository files:
+
+git pull --no-rebase origin main
+
+Explanation:
+This downloads and merges the latest changes from GitHub.
+
+If the repository is NOT cloned on the lab computer, run these instead:
+
+git clone https://github.com/sivapriyakumar246-cyber/GitExperiment1.git
+cd GitExperiment1
+
+Explanation:
+git clone downloads the repository from GitHub.
+cd enters the downloaded project folder.
+
+--------------------------------------------------
+STEP 2: CREATE THE WEBSITE FILE
+--------------------------------------------------
+
+Run this command in CMD:
+
+notepad index.html
+
+Explanation:
+This opens Notepad to create or edit the website's HTML file.
+
+PASTE THE FOLLOWING HTML INTO NOTEPAD:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Static Website</title>
+</head>
+<body>
+    <h1>Welcome to My Website!</h1>
+    <p>This website is deployed automatically using GitHub Actions.</p>
+</body>
+</html>
+
+Save the file using Ctrl+S and close Notepad.
+
+Explanation:
+index.html contains the webpage content that visitors will see.
+
+--------------------------------------------------
+STEP 3: CREATE THE GITHUB ACTIONS WORKFLOW
+--------------------------------------------------
+
+Run these commands in CMD:
+
+mkdir .github\workflows
+notepad .github\workflows\deploy.yml
+
+Explanation:
+mkdir creates the workflow folder if it does not already exist.
+If CMD says the folder already exists, continue.
+notepad opens the YAML workflow file.
+
+PASTE THE FOLLOWING YAML INTO NOTEPAD:
+
+name: Deploy Static Site
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload website files
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+Save using Ctrl+S and close Notepad.
+
+Explanation:
+This workflow runs whenever changes are pushed to the main branch.
+It checks out the repository, prepares GitHub Pages, uploads the website files,
+and deploys the website.
+
+--------------------------------------------------
+STEP 4: ENABLE GITHUB PAGES
+--------------------------------------------------
+
+Run this command in CMD to open the Pages settings:
+
+start https://github.com/sivapriyakumar246-cyber/GitExperiment1/settings/pages
+
+Explanation:
+This opens the repository's GitHub Pages settings.
+
+On the GitHub Pages page:
+1. Find the Source dropdown under Build and deployment.
+2. Select GitHub Actions.
+3. If GitHub Actions is already selected, leave it selected.
+
+--------------------------------------------------
+STEP 5: ADD, COMMIT, AND PUSH THE FILES
+--------------------------------------------------
+
+Run these commands in CMD:
+
+git add index.html .github\workflows\deploy.yml
+
+Explanation:
+This stages the website file and the deployment workflow.
+
+Check the staged changes:
+
+git status
+
+Explanation:
+This displays the files that are ready to be committed.
+
+Commit the changes:
+
+git commit -m "Deploy static website using GitHub Actions"
+
+Explanation:
+This saves the staged changes as a Git commit.
+
+Push the commit to GitHub:
+
+git push origin main
+
+Explanation:
+This uploads the commit to the main branch on GitHub.
+The push triggers the deployment workflow.
+
+If Git says "nothing to commit", check git status.
+If the push is rejected because GitHub has newer commits, run:
+
+git pull --no-rebase origin main
+git push origin main
+
+If a merge conflict appears, stop and resolve it before pushing.
+
+--------------------------------------------------
+STEP 6: CHECK THE GITHUB ACTIONS WORKFLOW
+--------------------------------------------------
+
+Run this command in CMD:
+
+start https://github.com/sivapriyakumar246-cyber/GitExperiment1/actions
+
+Explanation:
+This opens the GitHub Actions page.
+
+1. Find the Deploy Static Site workflow.
+2. Open its latest run.
+3. Wait for it to finish.
+4. A green check mark means the deployment succeeded.
+5. If it fails, open the failed job and read the error.
+
+--------------------------------------------------
+STEP 7: OPEN THE DEPLOYED WEBSITE
+--------------------------------------------------
+
+Run this command in CMD:
+
+start https://sivapriyakumar246-cyber.github.io/GitExperiment1/
+
+Explanation:
+This opens the published website in the browser.
+
+EXPECTED OUTPUT:
+The webpage displays:
+
+Welcome to My Website!
+This website is deployed automatically using GitHub Actions.
+
+--------------------------------------------------
+RESULT:
+--------------------------------------------------
+
+The static website was successfully deployed using GitHub Actions and GitHub Pages.
+The deployment workflow completed successfully, and the published website displayed
+"Welcome to My Website!".
