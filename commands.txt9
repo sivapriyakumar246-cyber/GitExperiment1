@@ -1,0 +1,157 @@
+EX.NO. 10: JENKINS JOB TRIGGERED BY GITHUB WEBHOOK
+
+AIM:
+To configure a Jenkins job that automatically starts a build whenever code is pushed to a GitHub repository using a GitHub webhook.
+
+GITHUB REPOSITORY:
+https://github.com/sivapriyakumar246-cyber/GitExperiment1.git
+
+
+STEP 1: Start Jenkins
+
+1. Start Jenkins on your computer.
+2. Open the browser and visit:
+
+   http://localhost:8080
+
+3. Sign in to Jenkins.
+
+Note: GitHub must be able to reach Jenkins for webhook triggering. The ngrok tunnel must be running and forwarding to the Jenkins port (usually 8080).
+
+
+STEP 2: Create a Jenkins Freestyle Job
+
+1. On the Jenkins dashboard, click New Item.
+2. Enter the job name:
+
+   GitHub-Webhook-CI
+
+3. Select Freestyle project.
+4. Click OK.
+
+
+STEP 3: Configure Source Code Management
+
+1. In the job configuration, find Source Code Management.
+2. Select Git.
+3. Enter the repository URL:
+
+   https://github.com/sivapriyakumar246-cyber/GitExperiment1.git
+
+4. In Branch Specifier, enter:
+
+   */main
+
+
+STEP 4: Configure Build Trigger
+
+1. Find Build Triggers.
+2. Select:
+
+   GitHub hook trigger for GITScm polling
+
+3. Do not select Trigger build remotely for this push-webhook experiment.
+
+
+STEP 5: Add a Build Step
+
+1. Find the Build section.
+2. Click Add build step.
+3. If Jenkins is running a Windows agent, select Execute Windows batch command.
+4. Enter:
+
+   echo Jenkins build started
+   echo Checking out GitHub repository
+   dir
+   echo Jenkins build completed successfully
+
+5. Click Save.
+
+
+STEP 6: Configure the GitHub Webhook
+
+1. Open the GitHub repository:
+
+   https://github.com/sivapriyakumar246-cyber/GitExperiment1
+
+2. Go to Settings → Webhooks.
+3. Click Add webhook.
+4. Enter the Payload URL:
+
+   https://atom-quickstep-germinate.ngrok-free.dev/github-webhook/
+
+5. Set Content type to:
+
+   application/json
+
+6. Select:
+
+   Just the push event
+
+7. Ensure Active is checked.
+8. Click Add webhook.
+
+Note: This ngrok URL works only while the tunnel is active and forwarding to Jenkins. If the ngrok URL changes, update the GitHub webhook Payload URL.
+
+
+STEP 7: Test the Jenkins Job Manually
+
+1. Open the Jenkins job GitHub-Webhook-CI.
+2. Click Build Now.
+3. Open the latest build from Build History.
+4. Click Console Output.
+5. Confirm that the build finishes with SUCCESS.
+
+
+STEP 8: Push a Test Change from CMD
+
+Open CMD and run each command separately:
+
+cd "%USERPROFILE%\GitExperiment1\GitExperiment1"
+
+Check the current Git status:
+
+git status
+
+Create a test file:
+
+echo Experiment 10 GitHub webhook test > webhook-test.txt
+
+Stage the file:
+
+git add webhook-test.txt
+
+Commit the change:
+
+git commit -m "Test Jenkins GitHub webhook"
+
+Push the commit:
+
+git push origin main
+
+If the push is rejected because GitHub has newer commits, run:
+
+git pull --no-rebase origin main
+
+Then push again:
+
+git push origin main
+
+If Git reports a merge conflict, resolve it before pushing. Do not repeat pull/push commands unnecessarily.
+
+
+STEP 9: Verify the Webhook and Automatic Build
+
+1. Open GitHub → Repository → Settings → Webhooks.
+2. Click the configured webhook.
+3. Check Recent Deliveries for a successful ping or push delivery.
+4. Open Jenkins → GitHub-Webhook-CI.
+5. Check Build History for a new build that appeared after the push.
+6. Open the new build and click Console Output.
+7. Confirm that it finished with SUCCESS.
+
+A build started by clicking Build Now tests the Jenkins job manually. A new build appearing automatically after the GitHub push verifies the webhook trigger.
+
+
+RESULT:
+The Jenkins Freestyle job was configured with the GitHub repository, build step, and GitHub webhook. A repository push triggered Jenkins automatically, and the build execution was verified successfully.
