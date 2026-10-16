@@ -1,0 +1,43 @@
+REM EXPERIMENT 5: Create a Basic GitHub Actions Workflow
+REM Step 1: Clone your GitHub repository (run only if not already cloned)
+git clone https://github.com/sivapriyakumar246-cyber/GitExperiment1.git
+
+REM Step 2: Enter the repository folder
+cd GitExperiment1
+
+REM Step 3: Check the repository status
+git status
+
+REM Step 4: Create the folder for GitHub Actions workflow
+mkdir .github\workflows
+
+REM Step 5: Open Notepad to create the workflow file
+notepad .github\workflows\main.yml
+
+REM In Notepad, paste the following YAML, save with Ctrl+S, and close Notepad:
+REM name: Basic CI Workflow
+REM on:
+REM   push:
+REM     branches: ["main"]
+REM   pull_request:
+REM     branches: ["main"]
+REM jobs:
+REM   build:
+REM     runs-on: ubuntu-latest
+REM     steps:
+REM       - name: Checkout repository
+REM         uses: actions/checkout@v4
+REM       - name: Display a message
+REM         run: echo "Hello, GitHub Actions!"
+
+REM Step 6: Add the workflow file to Git
+git add .github\workflows\main.yml
+
+REM Step 7: Commit the workflow
+git commit -m "Add basic GitHub Actions workflow"
+
+REM Step 8: Push the workflow to GitHub
+git push origin main
+
+REM Step 9: Open GitHub Actions to check the workflow run
+start https://github.com/sivapriyakumar246-cyber/GitExperiment1/actions
