@@ -1,0 +1,59 @@
+REM EXPERIMENT 6: Automate Test Runs Using GitHub Actions
+
+REM 1. Create the Python test file using Notepad
+notepad test_sample.py
+
+REM In Notepad, type/paste this Python code, save, and close:
+REM def test_addition():
+REM     assert 2 + 3 == 5
+
+REM 2. Create requirements.txt listing pytest
+echo pytest > requirements.txt
+
+REM 3. Run the test locally
+python -m pip install pytest
+python -m pytest
+
+REM Expected: 1 passed
+
+REM 4. Open the GitHub Actions workflow file
+notepad .github\workflows\test.yml
+
+REM In Notepad, paste this YAML, save, and close:
+REM name: Run Tests
+REM
+REM on:
+REM   push:
+REM     branches: ["main"]
+REM   pull_request:
+REM     branches: ["main"]
+REM
+REM jobs:
+REM   test:
+REM     runs-on: ubuntu-latest
+REM     steps:
+REM       - name: Checkout repository
+REM         uses: actions/checkout@v4
+REM       - name: Set up Python
+REM         uses: actions/setup-python@v5
+REM         with:
+REM           python-version: "3.x"
+REM       - name: Install dependencies
+REM         run: python -m pip install -r requirements.txt
+REM       - name: Run tests
+REM         run: python -m pytest
+
+REM 5. Add the test and workflow files to Git
+git add test_sample.py requirements.txt .github\workflows\test.yml
+
+REM 6. Check the staged files
+git status
+
+REM 7. Commit the changes
+git commit -m "Add automated test workflow"
+
+REM 8. Push the changes to GitHub
+git push origin main
+
+REM 9. Open GitHub Actions to check the workflow
+start https://github.com/sivapriyakumar246-cyber/GitExperiment1/actions
