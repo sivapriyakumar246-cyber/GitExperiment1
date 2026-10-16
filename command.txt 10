@@ -1,0 +1,123 @@
+EXPERIMENT 9: Use Secrets in GitHub Actions Securely and Build a Docker Image
+
+AIM:
+To securely use a GitHub repository secret in a GitHub Actions workflow and automatically build a Docker image when code is pushed to the main branch.
+
+PROCEDURE:
+
+STEP 1: Open CMD and navigate to the cloned repository.
+
+cd "%USERPROFILE%\GitExperiment1\GitExperiment1"
+
+STEP 2: Check the current Git status.
+
+git status
+
+STEP 3: Create the Dockerfile using CMD.
+
+(echo FROM nginx:alpine&echo COPY index.html /usr/share/nginx/html/index.html) > Dockerfile
+
+STEP 4: Verify that Dockerfile and index.html exist.
+
+dir Dockerfile
+dir index.html
+
+STEP 5: Create the GitHub Actions workflow folder if it does not exist.
+
+mkdir .github\workflows
+
+If CMD says the folder already exists, continue.
+
+STEP 6: Open Notepad to create the workflow file.
+
+notepad .github\workflows\docker-build.yml
+
+Paste the following YAML into Notepad, then save and close it.
+
+-------------------- docker-build.yml --------------------
+
+name: Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check repository secret securely
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          if [ -z "$API_KEY" ]; then
+            echo "API_KEY secret is missing"
+            exit 1
+          else
+            echo "API_KEY secret is available"
+          fi
+
+      - name: Build Docker Image
+        run: docker build -t my-app-image .
+
+-------------------- END OF YAML --------------------
+
+STEP 7: Add the repository secret on GitHub.
+
+1. Open the GitHub repository.
+2. Go to Settings.
+3. Select Secrets and variables.
+4. Select Actions.
+5. Click New repository secret.
+6. Enter the secret name: API_KEY
+7. Enter a demo/test value as the secret value.
+8. Click Add secret.
+
+Do not print or display the secret value in the workflow logs.
+
+If API_KEY already exists from the previous experiment, use the existing secret.
+
+STEP 8: Stage the required files.
+
+git add index.html Dockerfile .github\workflows\docker-build.yml
+
+STEP 9: Check the staged files.
+
+git status
+
+The following files should be staged:
+- index.html
+- Dockerfile
+- .github/workflows/docker-build.yml
+
+If Dockerfile.txt appears as an untracked file, remove the accidental text file:
+
+del Dockerfile.txt
+
+Then check again:
+
+git status
+
+STEP 10: Commit the changes.
+
+git commit -m "Add Docker image build workflow"
+
+STEP 11: Push the changes to GitHub.
+
+git push origin main
+
+STEP 12: Verify the GitHub Actions workflow.
+
+1. Open the GitHub repository.
+2. Click the Actions tab.
+3. Open the workflow named Build Docker Image.
+4. Check the workflow run status.
+5. A green Success status means the workflow completed successfully.
+
+RESULT:
+The GitHub Actions workflow successfully checked that the repository secret was available and built a Docker image automatically after pushing changes to the main branch.
