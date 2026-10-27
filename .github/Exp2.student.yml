@@ -1,0 +1,16 @@
+name: Experiment 2 - Student Details
+
+on:
+  workflow_dispatch:
+
+jobs:
+  student-program:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display Student Details
+        run: |
+          echo "Student Details"
+          echo "Name: Priya"
+          echo "Department: AI and Data Science"
+          echo "Year: III Year"
