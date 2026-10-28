@@ -1,0 +1,75 @@
+Experiment 6 – Step-by-Step Procedure
+Title: Automate Test Runs Using GitHub Actions
+Step 1: Open Repository
+Open GitHub⁠�.
+Log in to your account.
+Open your GitExperiment1 repository.
+Step 2: Create Python Test File
+Click Code.
+Click Add file → Create new file.
+Enter the filename test_math.py.
+Type the Python test code:
+def test_addition():
+    assert 2 + 3 == 5
+
+def test_subtraction():
+    assert 5 - 2 == 3
+
+def test_multiplication():
+    assert 4 * 3 == 12
+Step 3: Save the Test File
+Click Commit changes.
+Enter the commit message Add Python test cases.
+Select Commit directly to the main branch.
+Click Commit changes.
+Step 4: Create Workflow File
+Open the .github folder.
+Open the workflows folder.
+Click Add file → Create new file.
+Enter the filename test.yml.
+Step 5: Write Workflow Configuration
+Paste the following YAML code into the editor:
+name: Run Tests
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install pytest
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run tests
+        run: pytest
+Step 6: Save the Workflow File
+Click Commit changes.
+Enter the commit message Add automated Python test workflow.
+Select Commit directly to the main branch.
+Click Commit changes.
+Step 7: Open GitHub Actions
+Open the repository.
+Click the Actions tab.
+Select Run Tests on the left side.
+Click the latest workflow run.
+Step 8: Verify Test Results
+Click the test job.
+Open the Run tests step.
+Check whether the output shows that all three tests passed.
+Expected result: 3 passed with a green tick (✓).
+Step 9: Result
+The Python test cases were automatically executed using GitHub Actions, and all three tests passed successfully.
