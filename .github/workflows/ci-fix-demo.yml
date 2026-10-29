@@ -17,6 +17,4 @@ jobs:
         run: |
           echo "Starting CI test"
           python --version
-
-      - name: Intentional failure for testing
-        run: exit 1
+          echo "CI test completed successfully"
