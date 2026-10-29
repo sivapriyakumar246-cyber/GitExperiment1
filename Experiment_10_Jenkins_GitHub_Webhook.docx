@@ -1,0 +1,116 @@
+Experiment: Jenkins Integration with GitHub Webhook
+Aim: To integrate Jenkins with GitHub using a webhook and automatically trigger a Jenkins build whenever changes are pushed to the GitHub repository.
+Software Requirements
+Git and GitHub account
+Jenkins
+ngrok
+Windows operating system
+Web browser
+Step 1: Create a GitHub Repository
+Open GitHub⁠�.
+Sign in to your account.
+Create a repository named:
+GitExperiment1
+Select Public.
+Click Create repository.
+Repository URL:
+https://github.com/sivapriyakumar246-cyber/GitExperiment1
+You already created this repository, so you don't need to create it again.
+Step 2: Create a Test File
+Inside the repository, create a file with this name:
+webhook-test.txt
+Add this content:
+GitHub Webhook Experiment
+Testing Jenkins integration with GitHub.
+Click Commit changes.
+This file will help us test whether changes pushed to GitHub trigger Jenkins.
+Step 3: Open Jenkins
+Open your browser.
+Enter:
+http://localhost:8080
+Sign in if required.
+Step 4: Create a Jenkins Job
+Click New Item.
+Enter the job name:
+GitHub-Webhook-Experiment
+Select Freestyle project.
+Click OK.
+Step 5: Connect Jenkins to GitHub
+Inside the job configuration:
+Find Source Code Management.
+Select Git.
+In Repository URL, enter:
+https://github.com/sivapriyakumar246-cyber/GitExperiment1.git
+Under Branches to build, enter:
+*/main
+Leave credentials empty because this repository is public.
+Step 6: Configure the Build Trigger
+Find Build Triggers.
+Tick:
+GitHub hook trigger for GITScm polling
+This allows GitHub webhook notifications to trigger the Jenkins job.
+Step 7: Add the Build Command
+Find Build Steps.
+Click Add build step.
+Select Execute Windows batch command.
+Enter:
+echo GitHub Webhook Experiment
+echo Build triggered successfully!
+Click Save.
+Step 8: Configure ngrok
+Jenkins runs locally on your computer. GitHub needs a public URL to send webhook notifications to it.
+Open Command Prompt.
+Run:
+ngrok http 8080
+Find the HTTPS forwarding URL displayed by ngrok.
+It will look similar to:
+https://your-ngrok-address.ngrok-free.dev
+Important: Use the actual HTTPS URL displayed on your computer, not the example above. Keep the ngrok window open while testing.
+Step 9: Configure the GitHub Webhook
+Open your GitHub repository.
+Click Settings.
+Select Webhooks.
+Click Add webhook.
+In Payload URL, enter your actual ngrok HTTPS URL followed by:
+/github-webhook/
+For example, the format is:
+https://your-ngrok-address.ngrok-free.dev/github-webhook/
+Set Content type to:
+application/json
+Select Just the push event.
+Ensure Active is checked.
+Click Add webhook.
+GitHub should display a successful delivery if the endpoint is reachable.
+Step 10: Test Jenkins Manually
+Open Jenkins.
+Select GitHub-Webhook-Experiment.
+Click Build Now.
+Open the latest build number.
+Click Console Output.
+The expected output at the end is:
+GitHub Webhook Experiment
+Build triggered successfully!
+Finished: SUCCESS
+If the build fails during checkout, inspect the error before changing any files.
+Important: Your repository currently has filename issues
+We found filenames that Windows cannot check out, including:
+.github/workflows/basic-ci.yml..
+Experiment 4: Collaborate via forks and pull requests
+experiment6: Automate Test Runs Using GitHub Actions
+Windows does not allow colons in ordinary filenames, and trailing dots are also invalid. We have renamed some of these files, but we have not yet confirmed that the Jenkins build succeeds.
+There may be additional incompatible filenames. You do not need to keep renaming files blindly; first check the latest build result. If necessary, we can fix the remaining checkout issue carefully.
+Step 11: Test Automatic Webhook Triggering
+Do this only after the manual Jenkins build succeeds.
+Open the GitHub repository.
+Open webhook-test.txt.
+Click the pencil icon.
+Add a line:
+Automatic webhook test
+Click Commit changes.
+Return to Jenkins.
+Check Build History.
+If a new build starts automatically, the webhook is working.
+Expected result: A successful Jenkins build is triggered by a new commit pushed to GitHub.
+Step 12: Save Your Practical Record
+Create a folder on your computer named:
+Jenkins_GitHub_Webhook_Experiment
