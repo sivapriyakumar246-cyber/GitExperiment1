@@ -1,0 +1,21 @@
+name: Ex11 Failing CI Workflow
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display a message
+        run: echo "Starting CI workflow"
+
+      - name: Intentionally fail the workflow
+        run: exit 1
