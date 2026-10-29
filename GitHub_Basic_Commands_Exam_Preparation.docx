@@ -1,0 +1,23 @@
+One Complete Practical Program
+If your examiner says, "Create a Git repository, add a file, commit it, and push it to GitHub," follow this procedure.
+Aim
+To create a Git repository, track files, commit changes, and push them to GitHub.
+Commands to Execute
+Run these commands one by one in Windows Command Prompt:
+git --version
+mkdir GitExperiment
+cd GitExperiment
+git init
+git config --global user.name "Student"
+git config --global user.email "student@example.com"
+echo Hello GitHub > Student.txt
+git status
+git add Student.txt
+git commit -m "Initial commit"
+git branch -M main
+Now create a new, empty repository on GitHub. Copy its URL and run:
+git remote add origin YOUR_REPOSITORY_URL
+Finally:
+git push -u origin main
+Open your GitHub repository in the browser and verify that Student.txt appears.
+Important: Replace the example username, email, and repository URL with your own details. If GitHub asks for authentication, follow the authentication method configured for your account.
