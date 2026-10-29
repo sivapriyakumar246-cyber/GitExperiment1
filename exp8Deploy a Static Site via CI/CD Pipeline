@@ -1,0 +1,56 @@
+EXPERIMENT 8
+Deploy a Static Site via CI/CD Pipeline
+Step 1: Open GitHub Repository
+Open the browser.
+Go to GitHub⁠�.
+Log in to your GitHub account.
+Open your repository: GitExperiment1.
+Click the Code tab.
+Step 2: Verify the Website Files
+Check whether index.html exists in the repository.
+Ensure the website contains the required HTML, CSS, and JavaScript files, if applicable.
+Open index.html and verify its content.
+Step 3: Open GitHub Pages Settings
+Click Settings in the repository.
+Select Pages from the left-side menu.
+Check the Build and deployment section.
+Verify that the website is being built from the main branch.
+Note: In our experiment, GitHub Pages was already enabled, so we did not need to change the settings.
+Step 4: Open the Workflow Directory
+Return to the repository's Code tab.
+Open the .github folder.
+Open the workflows folder.
+Check whether deploy.yml already exists.
+Step 5: Verify the Deployment Workflow
+Open the existing deploy.yml file.
+Check its workflow configuration.
+Do not create a duplicate file if deploy.yml already exists.
+Do not overwrite an existing working workflow unnecessarily.
+Step 6: Open GitHub Actions
+Click the Actions tab.
+Find the deployment workflow, such as pages build and deployment.
+Open the latest workflow run.
+Check whether the workflow completed successfully.
+Step 7: Verify the Deployment Status
+Check the latest workflow run.
+Confirm that a green tick (✓) is displayed.
+A green tick indicates that the deployment workflow completed successfully.
+Step 8: Test Automatic Deployment
+Return to the Code tab.
+Open index.html.
+Click the Edit (✏️) button.
+Make a small change to the existing text.
+Click Commit changes.
+Enter a commit message, such as Update website content.
+Commit the change directly to the main branch.
+Open the Actions tab and check the latest deployment run.
+Wait for deployment to finish successfully.
+Step 9: Access the Deployed Website
+Open the repository's Settings → Pages.
+Click the published website link.
+Refresh the website.
+Verify that your changes appear.
+Website URL:
+GitHub Pages Website⁠�
+Step 10: Result
+Thus, a static website was successfully deployed using GitHub Pages. The deployment status was verified through GitHub Actions, and changes to the website were published through the deployment process.
