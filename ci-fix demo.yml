@@ -1,0 +1,26 @@
+File name: "ci-fix demo.yml"
+
+Location: ".github/workflows/ci-fix demo.yml"
+
+name: CI Failure and Fix Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run test command
+        run: |
+          echo "Starting CI test"
+          python --version
+
+      - name: Intentional failure for testing
+        run: exit 1
