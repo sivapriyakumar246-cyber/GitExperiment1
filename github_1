@@ -5,3 +5,57 @@ CI in GitHub means Continuous Integration, where code changes are automatically 
 AML stands for: YAML Ain’t Markup Language
 
 It is a human-readable data serialization language used for configuration files and automation workflows,
+C:
+
+A very popular low-level programming language.
+Used for system software, operating systems, embedded systems, and performance-critical apps.
+Known for speed and direct memory control.
+Java:
+
+A high-level, object-oriented programming language.
+Runs on the Java Virtual Machine (JVM), so it is portable across platforms.
+Common in enterprise software, Android apps, backend systems, and large applications.
+JavaScript:
+
+A scripting language mainly used for web development.
+Runs in browsers to make pages interactive.
+Also used on servers with Node.js.
+Repository:
+
+A repository (repo) is a storage location for project files and versions.
+In Git/GitHub, it stores the code, history, branches, and commit records.
+Example: GitHub repository.
+Java features:
+
+Object-oriented
+Platform independent (Write Once, Run Anywhere)
+Secure
+Robust and reliable
+Multithreading support
+Automatic memory management (garbage collection)
+Large ecosystem and libraries
+Docker:
+
+A tool that packages an application and everything it needs to run into a container.
+Containers are lightweight and portable.
+Helps in consistent deployment across different systems.
+Commonly used for microservices and app deployment.
+Short version:
+
+C = system-level, fast, low-level language
+Java = portable, object-oriented enterprise language
+JavaScript = web/browser scripting language
+Repository = project storage with version history
+Java features = OOP, portability, security, multithreading, etc.
+Docker = container platform for running apps consistently
+If you want, I can also give:
+
+a comparison table of C vs Java vs JavaScript
+a very beginner-friendly explanation of Git and GitHub
+a one-page study note for interview use
+one line answer
+A workflow is the series of steps used to develop, test, and deploy code in Git/GitHub; CI is Continuous Integration, and YAML is a human-readable config language used in automation workflows.
+
+what is c, java, javascript,repository,java features, docker give the one line answer
+C is a low-level system language, Java is a portable object-oriented language, JavaScript is a web scripting language, a repository is a project storage with version history, Java features include OOP, portability, security, and multithreading, and Docker is a container tool for packaging and running applications consistently.
+
