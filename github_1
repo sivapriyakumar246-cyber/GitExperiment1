@@ -1,3 +1,4 @@
 What is a workflow in Git/GitHub?
 
 Answer: A workflow is the set of steps or procedures followed while developing, testing, and deploying a project using Git and GitHub. 
+CI in GitHub means Continuous Integration, where code changes are automatically built and tested to ensure quality and catch errors early.
